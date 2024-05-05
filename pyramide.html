@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyramide des âges de la France en 1950</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <div id="pyramideDesAges"></div>
+
+  <script>
+    // Exemple de données de pyramide des âges pour la France en 1950 (données fictives)
+    const ageGroups = ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75-79', '80-84', '85+'];
+    const males = [200000, 180000, 160000, 150000, 140000, 130000, 120000, 110000, 100000, 90000, 80000, 70000, 60000, 50000, 40000, 30000, 20000, 10000];
+    const females = [190000, 170000, 150000, 140000, 130000, 120000, 110000, 100000, 90000, 80000, 70000, 60000, 50000, 40000, 30000, 20000, 10000, 5000];
+
+    const trace1 = {
+      y: ageGroups,
+      x: males,
+      name: 'Hommes',
+      type: 'bar',
+      orientation: 'h',
+      marker: {
+        color: 'rgba(55, 128, 191, 0.7)',
+        width: 1
+      }
+    };
+
+    const trace2 = {
+      y: ageGroups,
+      x: females.map(x => -x),
+      name: 'Femmes',
+      type: 'bar',
+      orientation: 'h',
+      marker: {
+        color: 'rgba(255, 100, 100, 0.7)',
+        width: 1
+      }
+    };
+
+    const data = [trace1, trace2];
+    const layout = {
+      title: 'Pyramide des âges de la France en 1950',
+      barmode: 'relative',
+      bargap: 0.1,
+      xaxis: { title: 'Nombre de personnes' }
+    };
+
+    Plotly.newPlot('pyramideDesAges', data, layout);
+  </script>
+</body>
+</html>
+
